@@ -2,10 +2,26 @@
 
 namespace store.Data.Migrations
 {
-    public partial class MisMiGracionesStores : Migration
+    public partial class Mismigraciones : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<string>(
+                name: "FirsName",
+                table: "AspNetUsers",
+                type: "nvarchar(50)",
+                maxLength: 50,
+                nullable: true,
+                defaultValue: "0");
+
+            migrationBuilder.AddColumn<string>(
+                name: "LastName",
+                table: "AspNetUsers",
+                type: "nvarchar(50)",
+                maxLength: 50,
+                nullable: true,
+                defaultValue: "0");
+
             migrationBuilder.CreateTable(
                 name: "Stores",
                 columns: table => new
@@ -28,6 +44,14 @@ namespace store.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Stores");
+
+            migrationBuilder.DropColumn(
+                name: "FirsName",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "LastName",
+                table: "AspNetUsers");
         }
     }
 }
