@@ -4,54 +4,63 @@
     ViewData["Title"] = "Index";
 }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Direccion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Longitud)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Latitud)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Longitud)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Latitud)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdStore">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdStore">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdStore">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="row justify-content-md-center">
+    <div class="card col-12">
+        <div class="row">
+            <div class="card-header bg-dark text-white col-12">
+                <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus-circle"></i> Add</a>
+            </div>
+            <div class="col-sm-12 text-center mt-1">
+                <table id="DataTable" class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Direccion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Telefono)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Longitud)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Latitud)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Direccion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Telefono)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Longitud)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Latitud)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.IdStore"><i class="far fa-edit text-info"></i></a> |
+                                    <a asp-action="Delete" asp-route-id="@item.IdStore"><i class="fas fa-trash text-danger"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

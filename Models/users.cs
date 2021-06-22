@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace store.Models
 {
-    public class users : IdentityUser
+    public class users:IdentityUser
     {
         public string FirsName { get; set; }
         public string LastName { get; set; }
