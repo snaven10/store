@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace store.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "ADMIN")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

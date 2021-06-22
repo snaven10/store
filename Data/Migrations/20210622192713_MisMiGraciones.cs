@@ -42,17 +42,17 @@ namespace store.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "fab4fac1-c546-41de-aebc-a14da6895711", "1", "Admin", "Administrador" });
+                values: new object[] { "fab4fac1-c546-41de-aebc-a14da6895711", "1", "ADMIN", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "c7b013f0-5201-4317-abd8-c211f91b7330", "2", "Normal", "Usuario Normal" });
+                values: new object[] { "c7b013f0-5201-4317-abd8-c211f91b7330", "2", "NORMAL", "NORMAL" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirsName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5", 0, "d9220efd-8b6a-42e5-a390-b960af4fbbfa", "admin@gmail.com", true, "Samuel", "Funes", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAEL/V/+HqIO++d8/aZJqCcnK4+RhzFof2HYeqLpWuosL4GXaAs06+Qirp/PnbkPbEqg==", "123456789", false, "1b4f6bba-702f-4752-905d-3be0045fbfbb", false, "admin@gmail.com" });
+                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5", 0, "92a4845e-1861-43db-ae42-99144c84960e", "admin@gmail.com", true, "Samuel", "Funes", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAEAACcQAAAAELX4lXCBziDU/xyUTfDbN63aJTNebuS3I23S2oQ5t4+HP+P4VXczyHYyFElXWbfSrA==", "123456789", false, "509f4fdc-eec2-4c3e-b0fa-f14996ca9ef0", false, "admin@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

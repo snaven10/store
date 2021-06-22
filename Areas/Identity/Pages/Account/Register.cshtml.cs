@@ -17,16 +17,18 @@ using store.Models;
 
 namespace store.Areas.Identity.Pages.Account
 {
-    [Authorize]
+    [Authorize(Roles = "ADMIN")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<users> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<users> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
             UserManager<users> userManager,
+            RoleManager<IdentityRole> roleManager,
             SignInManager<users> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
@@ -67,6 +69,9 @@ namespace store.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            public string role { get; set; }
+
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -94,7 +99,7 @@ namespace store.Areas.Identity.Pages.Account
                         pageHandler: null,
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
-
+                    await _userManager.AddToRoleAsync(user, Input.role);
                     return Redirect("~/User/Index");
                 }
                 foreach (var error in result.Errors)

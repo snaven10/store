@@ -64,45 +64,79 @@ namespace store.Controllers
         }
 
         // GET: UserController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var users = ctx.Users
+                            .Where(x => x.Id == id)
+                            .SingleOrDefault();
+            if (users == null)
+            {
+                return NotFound();
+            }
+
+            return View(users);
         }
 
         // POST: UserController/Edit/5
+        [BindProperty]
+        public users Useres { get; set; }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(string id, users users)
         {
-            try
+            if (id != Useres.Id)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch
+
+            if (!ModelState.IsValid)
             {
-                return View();
+                return BadRequest(ModelState.SelectMany(x => x.Value.Errors.Select(y => y.ErrorMessage)).ToList());
+            }
+            else
+            {
+                var user = ctx.Users.First(a => a.Id == Useres.Id);
+                user.FirsName = Useres.FirsName;
+                user.LastName = Useres.LastName;
+                user.Email = Useres.Email;
+                ctx.SaveChanges();
+                return RedirectToAction(nameof(Index));
             }
         }
 
         // GET: UserController/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var users = ctx.Users
+                            .Where(x => x.Id == id)
+                            .SingleOrDefault();
+            if (users == null)
+            {
+                return NotFound();
+            }
+
+            return View(users);
         }
 
         // POST: UserController/Delete/5
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var usuario = await ctx.Users.FindAsync(id);
+            ctx.Users.Remove(usuario);
+            await ctx.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -10,7 +10,7 @@ using store.Data;
 namespace store.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210622035458_MisMiGraciones")]
+    [Migration("20210622192713_MisMiGraciones")]
     partial class MisMiGraciones
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,15 +52,15 @@ namespace store.Data.Migrations
                         {
                             Id = "fab4fac1-c546-41de-aebc-a14da6895711",
                             ConcurrencyStamp = "1",
-                            Name = "Admin",
-                            NormalizedName = "Administrador"
+                            Name = "ADMIN",
+                            NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "c7b013f0-5201-4317-abd8-c211f91b7330",
                             ConcurrencyStamp = "2",
-                            Name = "Normal",
-                            NormalizedName = "Usuario Normal"
+                            Name = "NORMAL",
+                            NormalizedName = "NORMAL"
                         });
                 });
 
@@ -294,7 +294,7 @@ namespace store.Data.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d9220efd-8b6a-42e5-a390-b960af4fbbfa",
+                            ConcurrencyStamp = "92a4845e-1861-43db-ae42-99144c84960e",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirsName = "Samuel",
@@ -302,10 +302,10 @@ namespace store.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL/V/+HqIO++d8/aZJqCcnK4+RhzFof2HYeqLpWuosL4GXaAs06+Qirp/PnbkPbEqg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELX4lXCBziDU/xyUTfDbN63aJTNebuS3I23S2oQ5t4+HP+P4VXczyHYyFElXWbfSrA==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1b4f6bba-702f-4752-905d-3be0045fbfbb",
+                            SecurityStamp = "509f4fdc-eec2-4c3e-b0fa-f14996ca9ef0",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
