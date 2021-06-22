@@ -50,17 +50,13 @@ button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
 }
-
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+html,
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 .footer {
   position: absolute;
@@ -73,3 +69,4 @@ body {
 .mause{
     cursor:pointer;
 }
+
