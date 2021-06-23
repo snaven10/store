@@ -4,11 +4,11 @@
     ViewData["Title"] = "Edit";
 }
 
-<div class="row justify-content-md-center">
-    <div class="card col-12">
+<div class="row">
+    <div class="card col-6">
         <div class="row">
             <div class="card-header bg-dark text-white col-12">
-                <h4>Edit stores</h4>
+                <h4>stores</h4>
             </div>
             <div class="col-sm-12 mt-1">
                 <form asp-action="Edit">
@@ -41,19 +41,18 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label asp-for="Longitud" class="control-label"></label>
-                                        <input asp-for="Longitud" class="form-control" />
+                                        <input asp-for="Longitud" type="hidden" id="Longitud1" />
+                                        <input asp-for="Longitud" id="Longitud2" class="form-control" disabled />
                                         <span asp-validation-for="Longitud" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label asp-for="Latitud" class="control-label"></label>
-                                        <input asp-for="Latitud" class="form-control" />
+                                        <input asp-for="Latitud" type="hidden" id="Latitud1" />
+                                        <input asp-for="Latitud" id="Latitud2" class="form-control" disabled />
                                         <span asp-validation-for="Latitud" class="text-danger"></span>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div id="map"></div>
                                 </div>
                             </div>
                         </div>
@@ -66,8 +65,16 @@
             </div>
         </div>
     </div>
+    <div class="col-6">
+        <div class="col-12">
+            <input id="autocomplete" class="form-control" />
+        </div>
+        <div id="map" style="height:25rem; width:100%; float:right;"></div>
+    </div>
 </div>
-
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBLhEJMg5FhoaDRGMFoavTog2tOOh7Qus&libraries=places"></script>
+<script src="~/js/main.js"></script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

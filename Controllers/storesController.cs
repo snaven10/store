@@ -11,7 +11,7 @@ using store.Models;
 
 namespace store.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "ADMIN")]
     public class storesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,6 +22,7 @@ namespace store.Controllers
         }
 
         // GET: stores
+        [Authorize(Roles = "NORMAL,ADMIN")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Stores.ToListAsync());

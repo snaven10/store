@@ -19,7 +19,15 @@ google.maps.event.addDomListener(window, "load", function () {
         document.getElementById("Longitud2").value = longitud;
     }
     const ubicacion = new Localizacion(() => {
-        const myLatLng = {lat: ubicacion.latitude, lng: ubicacion.longitude};
+        let myLatLng = {};
+        if (document.getElementById("Latitud1") == "") {
+            myLatLng = { lat: ubicacion.latitude, lng: ubicacion.longitude };
+            mostrar(ubicacion.latitude, ubicacion.longitude);
+        } else {
+            let lngt = (document.getElementById("Longitud1").value * 1);
+            let latd = (document.getElementById("Latitud1").value * 1);
+            myLatLng = { lat: latd, lng: lngt };
+        }
         const options = {
             center: myLatLng,
             zoom: 15
@@ -29,9 +37,11 @@ google.maps.event.addDomListener(window, "load", function () {
         const marcador = new google.maps.Marker({
             position: myLatLng,
             map: mapa,
-            title: "Mi ubicacion actual"
+            draggable: true
         });
-        mostrar(ubicacion.latitude, ubicacion.longitude);
+        if (document.getElementById("Latitud1") == "") {
+            mostrar(ubicacion.latitude, ubicacion.longitude);
+        }
         let autocomplete = document.getElementById("autocomplete");
         const search = new google.maps.places.Autocomplete(autocomplete);
         search.bindTo("bounds", mapa);
@@ -52,9 +62,10 @@ google.maps.event.addDomListener(window, "load", function () {
 
             marcador.setPosition(place.geometry.location);
             marcador.setVisible(true);
-            console.log(place.geometry);
         });
-
+        google.maps.event.addListener(marcador, 'dragend', function (evt) {
+            mostrar(evt.latLng.lat().toFixed(6), evt.latLng.lng().toFixed(6));
+        });
         
     });
 });

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using store.Data;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace store.Controllers
 {
+    [Authorize(Roles = "ADMIN")]
     public class UserController : Controller
     {
         readonly ApplicationDbContext ctx;
