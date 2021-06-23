@@ -4,8 +4,8 @@
 + En caso que quieras trabajar con el [Visual Studio Code](https://code.visualstudio.com/download) tienes que tener [dotnet](https://dotnet.microsoft.com/download/dotnet/3.1) para poder ejecutar los comandos desde la terminal
 
 ##  Ejecucion de migraciones para creación de base de datos
-+ 1. Visual Studio ``PM> Update-Database``
-+ 2. .NET Core CLI 
++ Visual Studio ``PM> Update-Database``
++ .NET Core CLI 
 ``dotnet tool install --global dotnet-ef``
 ``dotnet ef database update``
 ### En una PowerShell para desarrolladores o cualquier terminal de tu preferencia   
