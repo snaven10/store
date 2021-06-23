@@ -11,7 +11,6 @@ using store.Models;
 
 namespace store.Controllers
 {
-    [Authorize(Roles = "ADMIN")]
     public class storesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,13 +21,14 @@ namespace store.Controllers
         }
 
         // GET: stores
-        [Authorize(Roles = "NORMAL,ADMIN")]
+        [Authorize(Roles = "ADMIN,NORMAL")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Stores.ToListAsync());
         }
 
         // GET: stores/Details/5
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,6 +47,7 @@ namespace store.Controllers
         }
 
         // GET: stores/Create
+        [Authorize(Roles = "ADMIN")]
         public IActionResult Create()
         {
             return View();
@@ -57,6 +58,7 @@ namespace store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Create([Bind("IdStore,Nombre,Direccion,Telefono,Longitud,Latitud")] stores stores)
         {
             if (ModelState.IsValid)
@@ -69,6 +71,7 @@ namespace store.Controllers
         }
 
         // GET: stores/Edit/5
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -89,6 +92,7 @@ namespace store.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Edit(int id, [Bind("IdStore,Nombre,Direccion,Telefono,Longitud,Latitud")] stores stores)
         {
             if (id != stores.IdStore)
@@ -120,6 +124,7 @@ namespace store.Controllers
         }
 
         // GET: stores/Delete/5
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -140,6 +145,7 @@ namespace store.Controllers
         // POST: stores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var stores = await _context.Stores.FindAsync(id);
@@ -148,6 +154,7 @@ namespace store.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "ADMIN")]
         private bool storesExists(int id)
         {
             return _context.Stores.Any(e => e.IdStore == id);

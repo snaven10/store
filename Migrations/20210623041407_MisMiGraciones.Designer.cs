@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using store.Data;
 
-namespace store.Data.Migrations
+namespace store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210622192713_MisMiGraciones")]
+    [Migration("20210623041407_MisMiGraciones")]
     partial class MisMiGraciones
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -211,6 +211,17 @@ namespace store.Data.Migrations
                     b.HasKey("IdStore");
 
                     b.ToTable("Stores");
+
+                    b.HasData(
+                        new
+                        {
+                            IdStore = 1,
+                            Direccion = "Ciudad pasifica",
+                            Latitud = "13.486709",
+                            Longitud = "-88.218421",
+                            Nombre = "Pasteleria la fe",
+                            Telefono = "1234578"
+                        });
                 });
 
             modelBuilder.Entity("store.Models.users", b =>
@@ -294,7 +305,7 @@ namespace store.Data.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "92a4845e-1861-43db-ae42-99144c84960e",
+                            ConcurrencyStamp = "15cf3f8f-c37a-4aec-82cc-a2902ceebad5",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirsName = "Samuel",
@@ -302,10 +313,10 @@ namespace store.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELX4lXCBziDU/xyUTfDbN63aJTNebuS3I23S2oQ5t4+HP+P4VXczyHYyFElXWbfSrA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFSgzAsDppLs+Xwn8L+Lah0VoIvqKST+W7VN0iRAdxEDtJr7SZD7XfrB0/y5W0+HvA==",
                             PhoneNumber = "123456789",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "509f4fdc-eec2-4c3e-b0fa-f14996ca9ef0",
+                            SecurityStamp = "07f0c90c-5811-4a15-8484-544c78f75f8c",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });

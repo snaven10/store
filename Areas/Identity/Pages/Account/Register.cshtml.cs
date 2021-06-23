@@ -21,14 +21,12 @@ namespace store.Areas.Identity.Pages.Account
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<users> _signInManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<users> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
             UserManager<users> userManager,
-            RoleManager<IdentityRole> roleManager,
             SignInManager<users> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
@@ -49,10 +47,10 @@ namespace store.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [Display(Name = "FirsName")]
+            [Display(Name = "Primer nombre")]
             public string FirsName { get; set; }
             [Required]
-            [Display(Name = "FirsName")]
+            [Display(Name = "Apellido")]
             public string LastName { get; set; }
             [Required]
             [EmailAddress]
@@ -60,14 +58,14 @@ namespace store.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} y un máximo de {1} caracteres.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Confirmar password")]
+            [Compare("Password", ErrorMessage = "El Password y el Password de confirmación no coinciden.")]
             public string ConfirmPassword { get; set; }
 
             public string role { get; set; }
@@ -90,7 +88,7 @@ namespace store.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("El usuario creó una nueva cuenta con contraseña.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

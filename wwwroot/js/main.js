@@ -19,8 +19,8 @@ google.maps.event.addDomListener(window, "load", function () {
         document.getElementById("Longitud2").value = longitud;
     }
     const ubicacion = new Localizacion(() => {
-        let myLatLng = {};
-        if (document.getElementById("Latitud1") == "") {
+        let myLatLng;
+        if (document.getElementById("Latitud1").value == "") {
             myLatLng = { lat: ubicacion.latitude, lng: ubicacion.longitude };
             mostrar(ubicacion.latitude, ubicacion.longitude);
         } else {

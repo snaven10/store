@@ -30,6 +30,7 @@ namespace store.Data
             this.SeedUsers(builder);
             this.SeedRoles(builder);
             this.SeedUserRoles(builder);
+            this.SeedStore(builder);
         }
 
         private void SeedUsers(ModelBuilder builder)
@@ -70,6 +71,23 @@ namespace store.Data
             builder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string>() { RoleId = "fab4fac1-c546-41de-aebc-a14da6895711", UserId = "b74ddd14-6340-4840-95c2-db12554843e5" }
                 );
+        }
+
+        private void SeedStore(ModelBuilder builder)
+        {
+            stores store = new stores()
+            {
+                IdStore = 1,
+                Nombre = "Pasteleria la fe",
+                Direccion = "Ciudad pasifica",
+                Telefono = "1234578",
+                Longitud = "-88.218421",
+                Latitud = "13.486709"
+            };
+            builder.Entity<stores>().HasData(
+                store
+            );
+
         }
         public DbSet<stores> Stores { get; set; }
         public DbSet<users> Users { get; set; }
